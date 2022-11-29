@@ -4,6 +4,7 @@
 #include <cstdlib>
 #include <time.h>
 #include <fstream>
+#include <cstring>
 
 using namespace std;
 
