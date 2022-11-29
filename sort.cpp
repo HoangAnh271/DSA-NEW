@@ -73,19 +73,24 @@ void mergeSort(int arr[], int l, int r)
     }
 }
 
-void flashSort(int a[], int n) 
+void flashSort(int a[], int n)
 {
     int __L[300000];
-    if (n <= 1) return;
+    if (n <= 1)
+        return;
     int m = n * 0.43;
-    if (m <= 2) m = 2;
+    if (m <= 2)
+        m = 2;
     // int m = n;
     for (int i = 0; i < m; ++i)
         __L[i] = 0;
     int Mx = a[0], Mn = a[0];
-    for (int i = 1; i < n; ++i) {
-        if (Mx < a[i]) Mx = a[i];
-        if (Mn > a[i]) Mn = a[i];
+    for (int i = 1; i < n; ++i)
+    {
+        if (Mx < a[i])
+            Mx = a[i];
+        if (Mn > a[i])
+            Mn = a[i];
     }
     if (Mx == Mn)
         return;
@@ -94,67 +99,75 @@ void flashSort(int a[], int n)
         ++__L[getK(a[i])];
     for (int i = 1; i < m; ++i)
         __L[i] += __L[i - 1];
-    //step 2
+    // step 2
     int count = 0;
     int i = 0;
-    while (count < n) {
+    while (count < n)
+    {
         int k = getK(a[i]);
-        while (i >= __L[k]) 
+        while (i >= __L[k])
             k = getK(a[++i]);
         int z = a[i];
-        while (i != __L[k]) {
+        while (i != __L[k])
+        {
             k = getK(z);
             int y = a[__L[k] - 1];
             a[--__L[k]] = z;
             z = y;
             ++count;
         }
-    }   
-    //step 3
-    for (int k = 1; k < m; ++k) {
+    }
+    // step 3
+    for (int k = 1; k < m; ++k)
+    {
         for (int i = __L[k] - 2; i >= __L[k - 1]; --i)
-            if (a[i] > a[i + 1]) {
+            if (a[i] > a[i + 1])
+            {
                 int t = a[i], j = i;
-                while (t > a[j + 1]) {a[j] = a[j + 1]; ++j;}
+                while (t > a[j + 1])
+                {
+                    a[j] = a[j + 1];
+                    ++j;
+                }
                 a[j] = t;
             }
     }
 }
 
-void swap(int *a, int *b) 
+void swap(int *a, int *b)
 {
-  int t = *a;
-  *a = *b;
-  *b = t;
+    int t = *a;
+    *a = *b;
+    *b = t;
 }
 
-int partition(int array[], int low, int high) 
+int partition(int array[], int low, int high)
 {
-  int pivot = array[low + (high-low)/2];
-  int i = (low - 1);
+    int pivot = array[low + (high - low) / 2];
+    int i = (low - 1);
 
-  for (int j = low; j < high; j++) 
-  {
-    if (array[j] <= pivot) 
-    {     
-      i++; 
-      swap(&array[i], &array[j]);
+    for (int j = low; j < high; j++)
+    {
+        if (array[j] <= pivot)
+        {
+            i++;
+            swap(&array[i], &array[j]);
+        }
     }
-  }
-  swap(&array[i + 1], &array[high]);
-  return (i + 1);
+    swap(&array[i + 1], &array[high]);
+    return (i + 1);
 }
 
-void quickSort(int array[], int low, int high) 
+void quickSort(int array[], int low, int high)
 {
-  if (low < high) 
-  {    
-    int pi = partition(array, low, high);
+    if (low < high)
+    {
+        int pi = partition(array, low, high);
 
-    quickSort(array, low, pi - 1);
+        quickSort(array, low, pi - 1);
 
-    quickSort(array, pi + 1, high);
-  }
+        quickSort(array, pi + 1, high);
+    }
 }
 
 void selectionSort(int a[], int n)
@@ -162,18 +175,19 @@ void selectionSort(int a[], int n)
 
     int k;
 
-    for (int i = 0;++count_comaprison && i < n - 1; i++){
+    for (int i = 0; i < n - 1; i++)
+    {
         k = i;
-        for (int j = i; j < n; j++){
-            if (a[k] > a[j]){
+        for (int j = i; j < n; j++)
+        {
+            if (a[k] > a[j])
+            {
                 k = j;
             }
         }
         swap(a[i], a[k]);
     }
-
 }
-
 
 void heapify(int a[], int n, int i)
 {
@@ -189,11 +203,11 @@ void heapify(int a[], int n, int i)
     if (right_child < n && a[right_child] > a[largest])
         largest = right_child;
 
-    if (i != largest){
+    if (i != largest)
+    {
         swap(a[i], a[largest]);
         heapify(a, n, largest);
     }
-
 }
 
 void heapSort(int a[], int n)
@@ -202,12 +216,12 @@ void heapSort(int a[], int n)
     for (int i = n / 2 - 1; i >= 0; i--)
         heapify(a, n, i);
 
-    for(int i = n - 1; i >= 0; i--){
+    for (int i = n - 1; i >= 0; i--)
+    {
         swap(a[i], a[0]);
         heapify(a, i, 0);
     }
 }
-
 
 void bubbleSort(int a[], int n)
 {
@@ -277,8 +291,8 @@ void countSort(int a[], int n)
         if (max < a[i])
             max = a[i];
 
-    int count[max+1];
-    for(int i = 0; i <= max + 1; i++)
+    int count[max + 1];
+    for (int i = 0; i <= max + 1; i++)
         count[i] = 0;
 
     for (int i = 0; i < n; i++)
@@ -362,16 +376,18 @@ void countComparisonSelectionSort(int a[], int n, unsigned long long &count_coma
 
     int k;
 
-    for (int i = 0; ++count_comaprison && i < n - 1; i++){
+    for (int i = 0; ++count_comaprison && i < n - 1; i++)
+    {
         k = i;
-        for (int j = i; ++count_comaprison && j < n; j++){
-            if ( ++count_comaprison && a[k] > a[j]){
+        for (int j = i; ++count_comaprison && j < n; j++)
+        {
+            if (++count_comaprison && a[k] > a[j])
+            {
                 k = j;
             }
         }
         swap(a[i], a[k]);
     }
-
 }
 
 void countComparisonHeapify(int a[], int n, int i, unsigned long long &count_comaprison)
@@ -382,17 +398,17 @@ void countComparisonHeapify(int a[], int n, int i, unsigned long long &count_com
     int left_child = 2 * i + 1;
     int right_child = 2 * i + 2;
 
-    if ( (++count_comaprison && left_child < n) && ( ++count_comaprison && a[left_child] > a[largest]))
+    if ((++count_comaprison && left_child < n) && (++count_comaprison && a[left_child] > a[largest]))
         largest = left_child;
 
-    if (( ++count_comaprison && right_child < n) && ( ++count_comaprison && a[right_child] > a[largest]))
+    if ((++count_comaprison && right_child < n) && (++count_comaprison && a[right_child] > a[largest]))
         largest = right_child;
 
-    if ( ++count_comaprison && i != largest){
+    if (++count_comaprison && i != largest)
+    {
         swap(a[i], a[largest]);
         heapify(a, n, largest);
     }
-
 }
 
 void countComparisonHeapSort(int a[], int n, unsigned long long &count_comaprison)
@@ -401,7 +417,8 @@ void countComparisonHeapSort(int a[], int n, unsigned long long &count_comapriso
     for (int i = n / 2 - 1; ++count_comaprison && i >= 0; i--)
         countComparisonHeapify(a, n, i, count_comaprison);
 
-    for(int i = n - 1; ++count_comaprison && i >= 0; i--){
+    for (int i = n - 1; ++count_comaprison && i >= 0; i--)
+    {
         swap(a[i], a[0]);
         countComparisonHeapify(a, i, 0, count_comaprison);
     }
@@ -677,7 +694,7 @@ void countComparisonFlashSort(int a[], int n, unsigned long long &countCompariso
         }
     }
     // step 3
-    for (int k = 1;++countComparison && k < m; ++k)
+    for (int k = 1; ++countComparison && k < m; ++k)
     {
         for (int i = __L[k] - 2; ++countComparison && i >= __L[k - 1]; --i)
             if (a[i] > a[i + 1])
@@ -693,31 +710,31 @@ void countComparisonFlashSort(int a[], int n, unsigned long long &countCompariso
     }
 }
 
-int countComparisonPartition(int array[], int low, int high, unsigned long long &count_comaprison) 
+int countComparisonPartition(int array[], int low, int high, unsigned long long &count_comaprison)
 {
-  int pivot = array[low + (high-low)/2];
-  int i = (low - 1);
+    int pivot = array[low + (high - low) / 2];
+    int i = (low - 1);
 
-  for (int j = low;++count_comaprison && j < high; j++) 
-  {
-    if (++count_comaprison && array[j] <= pivot) 
-    {     
-      i++; 
-      swap(&array[i], &array[j]);
+    for (int j = low; ++count_comaprison && j < high; j++)
+    {
+        if (++count_comaprison && array[j] <= pivot)
+        {
+            i++;
+            swap(&array[i], &array[j]);
+        }
     }
-  }
-  swap(&array[i + 1], &array[high]);
-  return (i + 1);
+    swap(&array[i + 1], &array[high]);
+    return (i + 1);
 }
 
-void countComparisonQuickSort(int array[], int low, int high, unsigned long long &count_comaprison) 
+void countComparisonQuickSort(int array[], int low, int high, unsigned long long &count_comaprison)
 {
-  if (++count_comaprison && low < high) 
-  {    
-    int pi = countComparisonPartition(array, low, high, count_comaprison);
+    if (++count_comaprison && low < high)
+    {
+        int pi = countComparisonPartition(array, low, high, count_comaprison);
 
-    countComparisonQuickSort(array, low, pi - 1, count_comaprison);
+        countComparisonQuickSort(array, low, pi - 1, count_comaprison);
 
-    countComparisonQuickSort(array, pi + 1, high, count_comaprison);
-  }
+        countComparisonQuickSort(array, pi + 1, high, count_comaprison);
+    }
 }
