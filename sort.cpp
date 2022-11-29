@@ -174,6 +174,23 @@ void selectionSort(int a[], int n)
 
 }
 
+void countComparisonSelectionSort(int a[], int n, int &count_comaprison)
+{
+
+    int k;
+
+    for (int i = 0; ++count_comaprison && i < n - 1; i++){
+        k = i;
+        for (int j = i; ++count_comaprison && j < n; j++){
+            if ( ++count_comaprison && a[k] > a[j]){
+                k = j;
+            }
+        }
+        swap(a[i], a[k]);
+    }
+
+}
+
 void heapify(int a[], int n, int i)
 {
 
@@ -207,35 +224,36 @@ void heapSort(int a[], int n)
     }
 }
 
-void countComparisonHeapify(int a[], int n, int i){
+void countComparisonHeapify(int a[], int n, int i, int &count_comaprison)
+{
 
     int largest = i;
 
     int left_child = 2 * i + 1;
     int right_child = 2 * i + 2;
 
-    if (left_child < n && a[left_child] > a[largest])
+    if ( (++count_comaprison && left_child < n) && ( ++count_comaprison && a[left_child] > a[largest]))
         largest = left_child;
 
-    if (right_child < n && a[right_child] > a[largest])
+    if (( ++count_comaprison && right_child < n) && ( ++count_comaprison && a[right_child] > a[largest]))
         largest = right_child;
 
-    if (i != largest){
+    if ( ++count_comaprison && i != largest){
         swap(a[i], a[largest]);
         heapify(a, n, largest);
     }
 
 }
 
-void countComparisonHeapSort(int a[], int n)
+void countComparisonHeapSort(int a[], int n, int &count_comaprison)
 {
 
-    for (int i = n / 2 - 1; i >= 0; i--)
-        countComparisonHeapify(a, n, i);
+    for (int i = n / 2 - 1; ++count_comaprison && i >= 0; i--)
+        countComparisonHeapify(a, n, i, count_comaprison);
 
-    for(int i = n - 1; i >= 0; i--){
+    for(int i = n - 1; ++count_comaprison && i >= 0; i--){
         swap(a[i], a[0]);
-        countComparisonHeapify(a, i, 0);
+        countComparisonHeapify(a, i, 0, count_comaprison);
     }
 }
 
