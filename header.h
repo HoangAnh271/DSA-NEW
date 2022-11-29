@@ -27,36 +27,52 @@ void sortWithAlgorithm(int array[], int n, int algorithm);
 void countComparisonAlgorithm(int array[], int n, int algorithm, unsigned long long &count_comparison);
 bool checkStringIsNumber(string str);
 
+/*
+    1 - Selection sort
+    2 - Insertion sort
+    3 - Bubble sort
+    4 - Heap sort
+    5 - Merge sort
+    6 - Quick sort
+    7 - Radix sort
+    8 - Shaker sort
+    9 - Shell sort
+    10 - Counting sort
+    11  - Flash sort
+    */
+
+void swap(int *a, int *b);
+void selectionSort(int a[], int n);
 void insertionSort(int array[], int n);
+void bubbleSort(int a[], int n);
 void merge(int arr[], int p, int q, int r);
 void mergeSort(int arr[], int l, int r);
-void bubbleSort(int a[], int n);
-void countRadix(int a[], int n, int exp);
-void radixSort(int a[], int n);
-void countSort(int a[], int n);
-void shellSort(int a[], int n);
-void shakerSort(int a[], int n);
-void flashSort(int a[], int n);
-void swap(int *a, int *b);
-int partition(int array[], int low, int high);
-void quickSort(int array[], int low, int high);
-void selectionSort(int a[], int n);
 void heapify(int a[], int n, int i);
 void heapSort(int a[], int n);
+int partition(int array[], int low, int high);
+void quickSort(int array[], int low, int high);
+void countRadix(int a[], int n, int exp);
+void radixSort(int a[], int n);
+void shakerSort(int a[], int n);
+void shellSort(int a[], int n);
+void countSort(int a[], int n);
+void flashSort(int a[], int n);
 
+void countComparisonSelectionSort(int a[], int n, unsigned long long &count_comaprison);
 void countComparisonInsertionSort(int array[], int n, unsigned long long &countComparison);
+void countComparisonBubbleSort(int a[], int n, unsigned long long &count_compare);
+void countComparisonMerge(int arr[], int p, int q, int r, unsigned long long &count_comparison);
+void countComparisonMergeSort(int arr[], int l, int r, unsigned long long &count_comparison);
+int countComparisonPartition(int array[], int low, int high, unsigned long long &count_comaprison);
+void countComparisonQuickSort(int array[], int low, int high, unsigned long long &count_comaprison);
+void countComparisonHeapify(int a[], int n, int i, unsigned long long &count_comaprison);
+void countComparisonHeapSort(int a[], int n, unsigned long long &count_comaprison);
 void countComparisonRadix(int a[], int n, int exp, unsigned long long &count_compare);
 void countComparisonRadixSort(int a[], int n, unsigned long long &count_compare);
 void countComparisonShakerSort(int a[], int n, unsigned long long &count_compare);
 void countComparisonShellSort(int a[], int n, unsigned long long &count_compare);
 void countComparisonCountSort(int a[], int n, unsigned long long &count_compare);
-void countComparisonBubbleSort(int a[], int n, unsigned long long &count_compare);
-void countComparisonMerge(int arr[], int p, int q, int r, unsigned long long &count_comparison);
-void countComparisonMergeSort(int arr[], int l, int r, unsigned long long &count_comparison);
 void countComparisonFlashSort(int a[], int n, unsigned long long &count_comaprison);
-void countComparisonSelectionSort(int a[], int n, unsigned long long &count_comaprison);
-void countComparisonHeapify(int a[], int n, int i, unsigned long long &count_comaprison);
-void countComparisonHeapSort(int a[], int n, unsigned long long &count_comaprison);
 
 void command_line1(int argc, char *argv[]);
 void command_line2(int argc, char *argv[]);

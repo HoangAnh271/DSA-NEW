@@ -162,7 +162,7 @@ void selectionSort(int a[], int n)
 
     int k;
 
-    for (int i = 0; i < n - 1; i++){
+    for (int i = 0;++count_comaprison && i < n - 1; i++){
         k = i;
         for (int j = i; j < n; j++){
             if (a[k] > a[j]){
@@ -691,4 +691,33 @@ void countComparisonFlashSort(int a[], int n, unsigned long long &countCompariso
                 a[j] = t;
             }
     }
+}
+
+int countComparisonPartition(int array[], int low, int high, unsigned long long &count_comaprison) 
+{
+  int pivot = array[low + (high-low)/2];
+  int i = (low - 1);
+
+  for (int j = low;++count_comaprison && j < high; j++) 
+  {
+    if (++count_comaprison && array[j] <= pivot) 
+    {     
+      i++; 
+      swap(&array[i], &array[j]);
+    }
+  }
+  swap(&array[i + 1], &array[high]);
+  return (i + 1);
+}
+
+void countComparisonQuickSort(int array[], int low, int high, unsigned long long &count_comaprison) 
+{
+  if (++count_comaprison && low < high) 
+  {    
+    int pi = countComparisonPartition(array, low, high, count_comaprison);
+
+    countComparisonQuickSort(array, low, pi - 1, count_comaprison);
+
+    countComparisonQuickSort(array, pi + 1, high, count_comaprison);
+  }
 }
