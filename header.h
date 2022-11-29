@@ -40,6 +40,9 @@ void flashSort(int a[], int n);
 void swap(int *a, int *b);
 int partition(int array[], int low, int high);
 void quickSort(int array[], int low, int high);
+void selectionSort(int a[], int n);
+void heapify(int a[], int n, int i);
+void heapSort(int a[], int n);
 
 void countComparisonInsertionSort(int array[], int n, unsigned long long &countComparison);
 void countComparisonRadix(int a[], int n, int exp, unsigned long long &count_compare);
