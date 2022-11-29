@@ -54,6 +54,9 @@ void countComparisonBubbleSort(int a[], int n, unsigned long long &count_compare
 void countComparisonMerge(int arr[], int p, int q, int r, unsigned long long &count_comparison);
 void countComparisonMergeSort(int arr[], int l, int r, unsigned long long &count_comparison);
 void countComparisonFlashSort(int a[], int n, unsigned long long &count_comaprison);
+void countComparisonSelectionSort(int a[], int n, unsigned long long &count_comaprison);
+void countComparisonHeapify(int a[], int n, int i, unsigned long long &count_comaprison);
+void countComparisonHeapSort(int a[], int n, unsigned long long &count_comaprison);
 
 void command_line1(int argc, char *argv[]);
 void command_line2(int argc, char *argv[]);

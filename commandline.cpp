@@ -248,7 +248,7 @@ void sortWithAlgorithm(int array[], int n, int algorithm)
     switch (algorithm)
     {
     case 1:
-        insertionSort(array, n);
+        selectionSort(array, n);
         break;
     case 2:
         insertionSort(array, n);
@@ -257,7 +257,7 @@ void sortWithAlgorithm(int array[], int n, int algorithm)
         bubbleSort(array, n);
         break;
     case 4:
-        mergeSort(array, 0, n - 1);
+        heapSort(array, n);
         break;
     case 5:
         mergeSort(array, 0, n - 1);
@@ -304,7 +304,7 @@ void countComparisonAlgorithm(int array[], int n, int algorithm, unsigned long l
     switch (algorithm)
     {
     case 1:
-        countComparisonInsertionSort(array, n, count_comparison);
+        countComparisonSelectionSort(array, n, count_comparison);
         break;
     case 2:
         countComparisonInsertionSort(array, n, count_comparison);
@@ -313,7 +313,7 @@ void countComparisonAlgorithm(int array[], int n, int algorithm, unsigned long l
         countComparisonBubbleSort(array, n, count_comparison);
         break;
     case 4:
-        countComparisonMergeSort(array, 0, n - 1, count_comparison);
+        countComparisonHeapSort(array, n, count_comparison);
         break;
     case 5:
         countComparisonMergeSort(array, 0, n - 1, count_comparison);
