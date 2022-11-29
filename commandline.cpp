@@ -319,19 +319,19 @@ void countComparisonAlgorithm(int array[], int n, int algorithm, unsigned long l
         countComparisonMergeSort(array, 0, n - 1, count_comparison);
         break;
     case 6:
-        countComparisonMergeSort(array, 0, n - 1, count_comparison);
+        countComparisonQuickSort(array, 0, n - 1, count_comparison);
         break;
     case 7:
         countComparisonRadixSort(array, n, count_comparison);
         break;
     case 8:
-        countComparisonMergeSort(array, 0, n - 1, count_comparison);
+        countComparisonShakerSort(array, 0, n - 1, count_comparison);
         break;
     case 9:
-        countComparisonMergeSort(array, 0, n - 1, count_comparison);
+        countComparisonShellSort(array, 0, n - 1, count_comparison);
         break;
     case 10:
-        countComparisonMergeSort(array, 0, n - 1, count_comparison);
+        countComparisonCountingSort(array, 0, n - 1, count_comparison);
         break;
     case 11:
         countComparisonFlashSort(array, n, count_comparison);
