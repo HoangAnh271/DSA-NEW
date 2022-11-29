@@ -5,8 +5,10 @@
 #include <time.h>
 #include <fstream>
 #include <cstring>
+#include <chrono>
 
 using namespace std;
+using namespace std::chrono;
 
 template <class T>
 void HoanVi(T &a, T &b);

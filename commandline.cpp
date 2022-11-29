@@ -179,7 +179,7 @@ void print_output_compare_mode(float running_time1, float running_time2, unsigne
     cout << "Comparisions: " << comparison1 << "  |  " << comparison2 << endl;
 }
 
-void print_output_paramenter(int output_paramenter, float running_time, unsigned long long comparison)
+void print_output_paramenter(int output_paramenter, auto running_time, unsigned long long comparison)
 {
     cout << "\n----------------------------\n";
     switch (output_paramenter)
@@ -353,17 +353,17 @@ void command_line1(int argc, char *argv[])
     cout << "Input size: " << n;
 
     int algorithm_name = algorithmNameToNumber(argv[2]),
-        output_parameter = outParameterToNumber(argv[4]);
+    output_parameter = outParameterToNumber(argv[4]);
 
-    float running_time = 0;
     unsigned long long count_comparison = 0;
 
-    clock_t start_time, end_time;
-    start_time = clock();
+
+    auto start_time = high_resolution_clock::now();
     sortWithAlgorithm(b, n, algorithm_name);
-    end_time = clock();
+    auto end_time = high_resolution_clock::now(); 
     b = copyArray(a, n);
-    running_time = (((float)end_time - start_time) / CLOCKS_PER_SEC) * 1000;
+    auto running_time = duration_cast<milliseconds>(end_time - start_time);
+
     countComparisonAlgorithm(b, n, algorithm_name, count_comparison);
     writeFile(b, n, "output.txt");
     print_output_paramenter(output_parameter, running_time, count_comparison);
